@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:cowlar_task/core/constants/app_colors.dart';
 import 'package:cowlar_task/core/constants/strings.dart';
 import 'package:cowlar_task/data/models/upcoming_movies_model.dart';
@@ -35,13 +33,23 @@ class _MovieListState extends ConsumerState<MovieList> {
           title: const Text('Watch'),
           actions: const [Icon(Icons.search)],
         ),
-        body: ListView.builder(
-          itemCount: controller.upcomingMovies.length,
-          itemBuilder: (context, index) {
-            UpcomingMovie movie = controller.upcomingMovies[index];
-            return MovieItem(movie: movie);
-          },
-        ),
+        body: controller.isFetching
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                itemCount: controller.getListLength,
+                itemBuilder: (context, index) {
+                  if (controller.shouldFetchMore(index)) {
+                    controller.fetchMoreMovies();
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  UpcomingMovie movie = controller.upcomingMovies[index];
+                  return MovieItem(movie: movie);
+                },
+              ),
       ),
     );
   }
