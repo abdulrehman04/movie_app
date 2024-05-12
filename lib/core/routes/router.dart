@@ -2,6 +2,7 @@ import 'package:cowlar_task/core/routes/route_names.dart';
 import 'package:cowlar_task/presentation/dashboard/dashboard_view.dart';
 import 'package:cowlar_task/presentation/movie%20details/movie_details_view.dart';
 import 'package:cowlar_task/presentation/movie%20list/movie_list_view.dart';
+import 'package:cowlar_task/presentation/video%20player/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -29,6 +30,14 @@ class CustomRouter {
         builder: (context, state) {
           Map data = state.extra as Map;
           return MovieDetailsView(movieId: data['movieId']);
+        },
+      ),
+      GoRoute(
+        path: RouteNames.instance.videoPlayer,
+        name: RouteNames.instance.videoPlayer,
+        builder: (context, state) {
+          Map data = state.extra as Map;
+          return VideoPlayerView(videoUrl: data['videoUrl']);
         },
       ),
     ],
