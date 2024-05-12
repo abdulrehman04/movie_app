@@ -36,4 +36,6 @@ class MovieDataSource {
       );
     }
   }
+
+  getMovieDetails(int id) {}
 }
