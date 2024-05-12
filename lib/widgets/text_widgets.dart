@@ -24,4 +24,12 @@ class TextWidgets {
       maxLines: maxLines,
     );
   }
+
+  static headingWidget(String title) {
+    return generalText(
+      title,
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
+    );
+  }
 }

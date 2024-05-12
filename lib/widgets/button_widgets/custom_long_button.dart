@@ -31,7 +31,7 @@ class CustomLongButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.r),
           color: onTap == null
               ? (buttonColor ?? AppColors.primaryColor).withOpacity(0.8)
-              : buttonColor,
+              : (buttonColor ?? AppColors.primaryColor),
           border: Border.all(
             color: onTap == null
                 ? (borderColor ?? AppColors.primaryColor).withOpacity(0.8)
