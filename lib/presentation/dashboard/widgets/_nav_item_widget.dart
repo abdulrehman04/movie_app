@@ -1,5 +1,6 @@
 import 'package:cowlar_task/core/constants/app_colors.dart';
 import 'package:cowlar_task/presentation/dashboard/dashboard_vm.dart';
+import 'package:cowlar_task/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
 
 class NavItemWidget extends StatelessWidget {
@@ -26,9 +27,9 @@ class NavItemWidget extends StatelessWidget {
             color: isSelected ? AppColors.whiteColor : Colors.grey,
           ),
           if (isSelected)
-            Text(
+            TextWidgets.generalText(
               item.title,
-              style: TextStyle(color: AppColors.whiteColor),
+              color: AppColors.whiteColor,
             ),
         ],
       ),
