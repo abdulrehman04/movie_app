@@ -12,13 +12,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 part './widgets/_movie_item.dart';
 
-class MovieList extends ConsumerWidget {
+class MovieList extends ConsumerStatefulWidget {
   const MovieList({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _MovieListState();
+}
+
+class _MovieListState extends ConsumerState<MovieList> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(movieListvmProvider).getMovies();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     MovieListViewModel controller = ref.watch(movieListvmProvider);
-    controller.getMovies();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
