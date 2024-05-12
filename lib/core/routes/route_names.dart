@@ -4,6 +4,6 @@ class RouteNames {
   RouteNames._();
 
   String movieList = '/movie_list';
-  String movie_detail = '/movie_detail';
+  String movieDetail = '/movie_detail';
   String dashboard = '/';
 }
