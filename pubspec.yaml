@@ -34,7 +34,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
 
   #video player
-  better_player: ^0.0.83
+  youtube_player_flutter: ^9.0.1
 
 dev_dependencies:
   flutter_test:
