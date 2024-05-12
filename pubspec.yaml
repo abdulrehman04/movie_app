@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
+  intl:
 
   #State management
   flutter_riverpod: ^2.4.10
