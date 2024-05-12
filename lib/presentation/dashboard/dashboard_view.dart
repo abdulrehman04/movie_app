@@ -1,7 +1,10 @@
+import 'package:cowlar_task/core/constants/app_colors.dart';
 import 'package:cowlar_task/presentation/dashboard/dashboard_vm.dart';
-import 'package:cowlar_task/presentation/dashboard/widgets/_nav_item_widget.dart';
+import 'package:cowlar_task/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+part './widgets/_nav_item_widget.dart';
 
 class DashboardView extends ConsumerWidget {
   const DashboardView({super.key});
