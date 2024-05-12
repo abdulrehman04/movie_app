@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 class ApiService {
-  get(String url, {bool usesAuth = true}) async {
+  Future<ResponseModel> get(String url, {bool usesAuth = true}) async {
     try {
       Map<String, String>? headers = {};
       if (usesAuth) {

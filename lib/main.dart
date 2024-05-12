@@ -1,12 +1,14 @@
 import 'package:cowlar_task/core/injection/dependency_injection.dart';
 import 'package:cowlar_task/core/routes/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+Future<void> main() async {
   setupDependencies();
+  await dotenv.load();
   runApp(const ProviderScope(child: MyApp()));
 }
 
