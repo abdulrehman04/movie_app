@@ -10,4 +10,9 @@ class MovieRepoImpl implements MovieRepository {
   ) async {
     return await MovieDataSource().fetchUpcomingMovies(page);
   }
+
+  @override
+  Future<ResponseModel<UpcomingMoviesModel>> getMovieDetails(int id) async {
+    return await MovieDataSource().getMovieDetails(id);
+  }
 }
