@@ -29,6 +29,9 @@ dependencies:
   google_fonts:
   flutter_screenutil: ^5.9.0
 
+  #env
+  flutter_dotenv: ^5.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -39,4 +42,7 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+assets:
+  - .env
 
