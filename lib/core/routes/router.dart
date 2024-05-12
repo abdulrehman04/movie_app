@@ -26,7 +26,10 @@ class CustomRouter {
       GoRoute(
         path: RouteNames.instance.movieDetail,
         name: RouteNames.instance.movieDetail,
-        builder: (context, state) => const MovieDetailsView(),
+        builder: (context, state) {
+          Map data = state.extra as Map;
+          return MovieDetailsView(movieId: data['movieId']);
+        },
       ),
     ],
   );

@@ -37,5 +37,7 @@ class MovieDataSource {
     }
   }
 
-  getMovieDetails(int id) {}
+  getMovieDetails(int id) {
+    print('data fetched');
+  }
 }
