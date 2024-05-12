@@ -1,3 +1,4 @@
+import 'package:cowlar_task/core/constants/app_colors.dart';
 import 'package:cowlar_task/presentation/dashboard/dashboard_vm.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +21,15 @@ class NavItemWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(item.icon),
-          Text(item.title),
+          Icon(
+            item.icon,
+            color: isSelected ? AppColors.whiteColor : Colors.grey,
+          ),
+          if (isSelected)
+            Text(
+              item.title,
+              style: TextStyle(color: AppColors.whiteColor),
+            ),
         ],
       ),
     );

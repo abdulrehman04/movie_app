@@ -1,7 +1,7 @@
 part of '../dashboard_vm.dart';
 
 List<Widget> _navPages = [
-  MovieList(),
+  const MovieList(),
   Container(),
   Container(),
   Container(),

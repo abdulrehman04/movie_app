@@ -15,7 +15,7 @@ class DashboardView extends ConsumerWidget {
         height: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          color: Colors.grey,
+          color: Colors.grey[900],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
