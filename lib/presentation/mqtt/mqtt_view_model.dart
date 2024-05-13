@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 
-final MQTTViewModelProvider = ChangeNotifierProvider((ref) {
+final mqttViewModelProvider = ChangeNotifierProvider((ref) {
   return MQTTViewModel();
 });
 

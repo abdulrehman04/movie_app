@@ -4,7 +4,6 @@ import 'package:cowlar_task/widgets/button_widgets/custom_long_button.dart';
 import 'package:cowlar_task/widgets/text_widgets.dart';
 import 'package:cowlar_task/widgets/textfield%20widgets/textfield_with_title.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +14,7 @@ class MQTTView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    MQTTViewModel controller = ref.watch(MQTTViewModelProvider);
+    MQTTViewModel controller = ref.watch(mqttViewModelProvider);
     return Scaffold(
       bottomNavigationBar: BottomMessageBar(
         controller: controller.messageController,

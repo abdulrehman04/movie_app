@@ -16,6 +16,7 @@ part './_mock_data.dart';
 @GenerateMocks([MovieRepoImpl, MovieDataSource, UpcomingMoviesDao])
 class MockAppDatabase2 extends Mock implements AppDatabase {
   // mocking it locally to be able to able to provide stubbed MockUpcomingMoviesDao
+  @override
   late MockUpcomingMoviesDao upcomingDao;
 
   MockAppDatabase2() {
