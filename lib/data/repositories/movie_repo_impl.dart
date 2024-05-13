@@ -8,13 +8,14 @@ import 'package:cowlar_task/domain/repositories/movie_repository.dart';
 
 class MovieRepoImpl implements MovieRepository {
   final AppDatabase _appDatabase;
-  MovieRepoImpl(this._appDatabase);
+  final MovieDataSource _movieDataSource;
+  MovieRepoImpl(this._appDatabase, this._movieDataSource);
 
   @override
   Future<ResponseModel<UpcomingMoviesModel>> fetchUpcomingMovies(
     int page,
   ) async {
-    ResponseModel response = await MovieDataSource().fetchUpcomingMovies(page);
+    ResponseModel response = await _movieDataSource.fetchUpcomingMovies(page);
     if (!response.hasError) {
       return ResponseModel(
         data: UpcomingMoviesModel.fromJson(response.data),
@@ -25,7 +26,7 @@ class MovieRepoImpl implements MovieRepository {
 
   @override
   Future<ResponseModel<MovieDetailModel>> getMovieDetails(int id) async {
-    ResponseModel response = await MovieDataSource().getMovieDetails(id);
+    ResponseModel response = await _movieDataSource.getMovieDetails(id);
     if (!response.hasError) {
       return ResponseModel(
         data: MovieDetailModel.fromJson(response.data),
@@ -36,7 +37,7 @@ class MovieRepoImpl implements MovieRepository {
 
   @override
   Future<ResponseModel<MovieVideosModel>> getMovieVideos(int id) async {
-    ResponseModel response = await MovieDataSource().getMovieVideos(id);
+    ResponseModel response = await _movieDataSource.getMovieVideos(id);
     if (!response.hasError) {
       return ResponseModel(
         data: MovieVideosModel.fromJson(response.data),
@@ -52,7 +53,12 @@ class MovieRepoImpl implements MovieRepository {
   }
 
   @override
-  Future<void> saveMovie(UpcomingMovie movie) async {
-    await _appDatabase.upcomingDao.saveMovie(movie);
+  Future<bool> saveMovie(UpcomingMovie movie) async {
+    try {
+      await _appDatabase.upcomingDao.saveMovie(movie);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }
