@@ -23,7 +23,7 @@ class _MovieListState extends ConsumerState<MovieList> {
   @override
   void initState() {
     super.initState();
-    ref.read(movieListvmProvider).getMovies();
+    ref.read(movieListvmProvider).init();
   }
 
   @override
