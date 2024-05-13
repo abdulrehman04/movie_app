@@ -32,62 +32,67 @@ class _MovieDetailsViewState extends ConsumerState<MovieDetailsView> {
   Widget build(BuildContext context) {
     MovieDetailsViewModel controller = ref.watch(movieDetailsViewModelProvider);
     return Scaffold(
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          MovieDetailAppBar(
-            poster: '${ApiUrls.imageBaseUrl}${controller.movie.posterPath}',
-            releaseDate:
-                'In Theatres ${DateFormat('MMM dd, yyyy').format(controller.movie.releaseDate)}',
-            onWatchTrailer: () {
-              context.push(
-                RouteNames.instance.videoPlayer,
-                extra: {'movieId': controller.movie.id},
-              );
-            },
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextWidgets.headingWidget('Genres'),
-                  10.verticalSpace,
-                  Wrap(
-                    spacing: 7,
-                    runSpacing: 10,
-                    children: controller.movie.genres.map((e) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(55),
-                          color: Colors.lightGreen,
+      body: controller.isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                MovieDetailAppBar(
+                  poster:
+                      '${ApiUrls.imageBaseUrl}${controller.movie.posterPath}',
+                  releaseDate:
+                      'In Theatres ${DateFormat('MMM dd, yyyy').format(controller.movie.releaseDate)}',
+                  onWatchTrailer: () {
+                    context.push(
+                      RouteNames.instance.videoPlayer,
+                      extra: {'movieId': controller.movie.id},
+                    );
+                  },
+                ),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextWidgets.headingWidget('Genres'),
+                        10.verticalSpace,
+                        Wrap(
+                          spacing: 7,
+                          runSpacing: 10,
+                          children: controller.movie.genres.map((e) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(55),
+                                color: Colors.lightGreen,
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                                horizontal: 15,
+                              ),
+                              child: TextWidgets.generalText(e.name),
+                            );
+                          }).toList(),
                         ),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 5,
-                          horizontal: 15,
+                        10.verticalSpace,
+                        Divider(
+                          color: Colors.grey[300],
                         ),
-                        child: TextWidgets.generalText(e.name),
-                      );
-                    }).toList(),
+                        15.verticalSpace,
+                        TextWidgets.headingWidget('Overview'),
+                        10.verticalSpace,
+                        TextWidgets.generalText(
+                          controller.movie.overview,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
                   ),
-                  10.verticalSpace,
-                  Divider(
-                    color: Colors.grey[300],
-                  ),
-                  15.verticalSpace,
-                  TextWidgets.headingWidget('Overview'),
-                  10.verticalSpace,
-                  TextWidgets.generalText(
-                    controller.movie.overview,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
-          )
-        ],
-      ),
     );
   }
 }

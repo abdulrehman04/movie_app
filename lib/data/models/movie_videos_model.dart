@@ -72,10 +72,12 @@ class Result {
       };
 }
 
+// ignore: constant_identifier_names
 enum Site { YOU_TUBE }
 
 final siteValues = EnumValues({"YouTube": Site.YOU_TUBE});
 
+// ignore: constant_identifier_names
 enum Type { BEHIND_THE_SCENES, CLIP, FEATURETTE, TEASER, TRAILER }
 
 final typeValues = EnumValues({

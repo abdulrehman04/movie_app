@@ -1,5 +1,4 @@
 import 'package:cowlar_task/core/injection/dependency_injection.dart';
-import 'package:cowlar_task/data/models/movie_detail_model.dart';
 import 'package:cowlar_task/data/models/movie_videos_model.dart';
 import 'package:cowlar_task/data/models/response_model.dart';
 import 'package:cowlar_task/domain/usecases/get_movie_videos.dart';
@@ -25,7 +24,6 @@ class VideoPlayerViewModel extends ChangeNotifier {
     isLoading = true;
     movieId = id;
     await fetchVideos();
-    print('here');
     initYoutube(getTrailerId());
   }
 
