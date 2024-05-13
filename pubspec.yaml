@@ -36,11 +36,17 @@ dependencies:
   #video player
   youtube_player_flutter: ^9.0.1
 
+  #local storage
+  floor: ^1.5.0
+  shared_preferences: ^2.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.0
+  floor_generator: ^1.4.2
+  build_runner: ^2.1.2
 
 
 flutter:
