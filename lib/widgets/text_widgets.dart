@@ -25,7 +25,7 @@ class TextWidgets {
     );
   }
 
-  static headingWidget(String title) {
+  static Widget headingWidget(String title) {
     return generalText(
       title,
       fontSize: 20,
