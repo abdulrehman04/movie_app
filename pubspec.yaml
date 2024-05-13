@@ -13,6 +13,8 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   intl:
+  internet_connection_checker: ^1.0.0+1
+  connectivity_plus: 5.0.2
 
   #State management
   flutter_riverpod: ^2.4.10
