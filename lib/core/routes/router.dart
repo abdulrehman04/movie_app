@@ -37,7 +37,9 @@ class CustomRouter {
         name: RouteNames.instance.videoPlayer,
         builder: (context, state) {
           Map data = state.extra as Map;
-          return VideoPlayerView(videoUrl: data['videoUrl']);
+          return VideoPlayerView(
+            movieId: data['movieId'],
+          );
         },
       ),
     ],

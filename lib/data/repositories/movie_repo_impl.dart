@@ -1,4 +1,5 @@
 import 'package:cowlar_task/data/models/movie_detail_model.dart';
+import 'package:cowlar_task/data/models/movie_videos_model.dart';
 import 'package:cowlar_task/data/models/response_model.dart';
 import 'package:cowlar_task/data/models/upcoming_movies_model.dart';
 import 'package:cowlar_task/data/sources/movie_data_source.dart';
@@ -24,6 +25,17 @@ class MovieRepoImpl implements MovieRepository {
     if (!response.hasError) {
       return ResponseModel(
         data: MovieDetailModel.fromJson(response.data),
+      );
+    }
+    return ResponseModel(data: null, hasError: true);
+  }
+
+  @override
+  Future<ResponseModel<MovieVideosModel>> getMovieVideos(int id) async {
+    ResponseModel response = await MovieDataSource().getMovieVideos(id);
+    if (!response.hasError) {
+      return ResponseModel(
+        data: MovieVideosModel.fromJson(response.data),
       );
     }
     return ResponseModel(data: null, hasError: true);

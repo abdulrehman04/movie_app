@@ -1,5 +1,6 @@
 import 'package:cowlar_task/core/constants/app_colors.dart';
 import 'package:cowlar_task/core/constants/strings.dart';
+import 'package:cowlar_task/core/routes/route_names.dart';
 import 'package:cowlar_task/presentation/movie%20details/movie_details_vm.dart';
 import 'package:cowlar_task/widgets/button_widgets/custom_long_button.dart';
 import 'package:cowlar_task/widgets/text_widgets.dart';
@@ -39,7 +40,10 @@ class _MovieDetailsViewState extends ConsumerState<MovieDetailsView> {
             releaseDate:
                 'In Theatres ${DateFormat('MMM dd, yyyy').format(controller.movie.releaseDate)}',
             onWatchTrailer: () {
-              print('hiii');
+              context.push(
+                RouteNames.instance.videoPlayer,
+                extra: {'movieId': controller.movie.id},
+              );
             },
           ),
           SliverToBoxAdapter(
@@ -82,13 +86,6 @@ class _MovieDetailsViewState extends ConsumerState<MovieDetailsView> {
               ),
             ),
           )
-          // SliverList.builder(
-          //   itemBuilder: (context, index) {
-          //     return ListTile(
-          //       title: TextWidgets.generalText('text: $index'),
-          //     );
-          //   },
-          // )
         ],
       ),
     );

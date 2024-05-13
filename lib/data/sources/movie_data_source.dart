@@ -10,4 +10,8 @@ class MovieDataSource {
   Future<ResponseModel> getMovieDetails(int id) async {
     return await ApiService().get('${ApiUrls.movieBaseUrl}/$id');
   }
+
+  Future<ResponseModel> getMovieVideos(int id) async {
+    return await ApiService().get('${ApiUrls.movieBaseUrl}/$id/videos');
+  }
 }
