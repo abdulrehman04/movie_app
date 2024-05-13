@@ -1,6 +1,5 @@
 import 'package:cowlar_task/presentation/mqtt/mqtt_client.dart';
 import 'package:cowlar_task/utils/utils.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mqtt_client/mqtt_client.dart';

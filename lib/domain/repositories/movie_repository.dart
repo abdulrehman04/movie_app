@@ -10,5 +10,5 @@ abstract class MovieRepository {
 
   // Offline methods
   Future<List<UpcomingMovie>> getSavedMovies();
-  Future<void> saveMovie(UpcomingMovie movie);
+  Future<bool> saveMovie(UpcomingMovie movie);
 }
