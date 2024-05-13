@@ -8,13 +8,13 @@ String movieDetailModelToJson(MovieDetailModel data) =>
 
 class MovieDetailModel {
   bool adult;
-  String backdropPath;
+  String? backdropPath;
   BelongsToCollection? belongsToCollection;
   int budget;
   List<Genre> genres;
   String homepage;
   int id;
-  String imdbId;
+  String? imdbId;
   List<String> originCountry;
   String originalLanguage;
   String originalTitle;
