@@ -7,4 +7,8 @@ abstract class MovieRepository {
   Future<ResponseModel<UpcomingMoviesModel>> fetchUpcomingMovies(int page);
   Future<ResponseModel<MovieDetailModel>> getMovieDetails(int id);
   Future<ResponseModel<MovieVideosModel>> getMovieVideos(int id);
+
+  // Offline methods
+  Future<List<UpcomingMovie>> getSavedMovies();
+  Future<void> saveMovie(UpcomingMovie movie);
 }

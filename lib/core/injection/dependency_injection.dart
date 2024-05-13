@@ -15,7 +15,7 @@ Future<void> setupDependencies() async {
   getIt.registerSingleton<AppDatabase>(database);
 
   // Repos
-  getIt.registerSingleton<MovieRepository>(MovieRepoImpl());
+  getIt.registerSingleton<MovieRepository>(MovieRepoImpl(getIt()));
 
   // Usecases
   getIt.registerSingleton<FetchUpcomingMovies>(FetchUpcomingMovies(getIt()));
