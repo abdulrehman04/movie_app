@@ -25,12 +25,12 @@ class ApiService {
       }
       return ResponseModel(
         errorMessage: body['status_message'] ?? 'API error',
-        hasError: false,
+        hasError: true,
       );
     } catch (e) {
       return ResponseModel(
         errorMessage: 'An error has occurred',
-        hasError: false,
+        hasError: true,
       );
     }
   }

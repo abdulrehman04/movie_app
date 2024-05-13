@@ -87,7 +87,6 @@ class UpcomingMovie {
   factory UpcomingMovie.fromJson(Map<String, dynamic> json) => UpcomingMovie(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
-        // genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         genreIds: jsonEncode(json['genre_ids']),
         id: json["id"],
         originalLanguage: json["original_language"],
@@ -106,7 +105,6 @@ class UpcomingMovie {
         "adult": adult,
         "backdrop_path": backdropPath,
         "genre_ids": genreIds,
-        // "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
         "id": id,
         "original_language": originalLanguage,
         "original_title": originalTitle,
@@ -114,8 +112,6 @@ class UpcomingMovie {
         "popularity": popularity,
         "poster_path": posterPath,
         "release_date": releaseDate,
-        // "release_date":
-        //     "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
         "title": title,
         "video": video,
         "vote_average": voteAverage,
