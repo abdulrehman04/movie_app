@@ -9,7 +9,7 @@ final mqttViewModelProvider = ChangeNotifierProvider((ref) {
 });
 
 class MQTTViewModel extends ChangeNotifier {
-  String connectionStatus = 'Disconnected';
+  bool connected = false;
   String topic = 'No Topic';
 
   TextEditingController messageController = TextEditingController();
@@ -24,12 +24,12 @@ class MQTTViewModel extends ChangeNotifier {
 
   disconnectServer() {
     _client.disconnect();
-    connectionStatus = 'Disconnected';
+    connected = false;
     notifyListeners();
   }
 
   onConnected() {
-    connectionStatus = 'Connected';
+    connected = true;
     notifyListeners();
   }
 
@@ -40,7 +40,7 @@ class MQTTViewModel extends ChangeNotifier {
   }
 
   void connectDisconnectServer() {
-    if (connectionStatus == 'Disconnected') {
+    if (!connected) {
       connectToServer();
     } else {
       disconnectServer();

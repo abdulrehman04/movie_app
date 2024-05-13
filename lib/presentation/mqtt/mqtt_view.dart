@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 part './widgets/bottom_message_bar.dart';
+part './widgets/topic_and_messages_section.dart';
 
 class MQTTView extends ConsumerWidget {
   const MQTTView({super.key});
@@ -16,10 +17,13 @@ class MQTTView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     MQTTViewModel controller = ref.watch(mqttViewModelProvider);
     return Scaffold(
-      bottomNavigationBar: BottomMessageBar(
-        controller: controller.messageController,
-        onSend: controller.onSendMessage,
-      ),
+      bottomNavigationBar:
+          controller.connected && controller.topic != 'No Topic'
+              ? BottomMessageBar(
+                  controller: controller.messageController,
+                  onSend: controller.onSendMessage,
+                )
+              : const SizedBox(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -29,71 +33,20 @@ class MQTTView extends ConsumerWidget {
               children: [
                 25.verticalSpace,
                 TextWidgets.generalText(
-                  controller.connectionStatus,
+                  controller.connected ? 'Connected' : 'Disconnected',
                   fontSize: 20,
                 ),
                 15.verticalSpace,
                 CustomLongButton(
-                  title: controller.connectionStatus == 'Connected'
-                      ? 'Disconnect'
-                      : 'Connect',
+                  title: controller.connected ? 'Disconnect' : 'Connect',
                   onTap: () {
                     controller.connectDisconnectServer();
                   },
                 ),
                 55.verticalSpace,
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextfieldWithTitle(
-                        title: 'Topic',
-                        controller: controller.topicController,
-                      ),
-                    ),
-                    15.horizontalSpace,
-                    GestureDetector(
-                      onTap: () {
-                        controller.subscribeToTopic();
-                      },
-                      child: Container(
-                        height: 55,
-                        width: 55,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.blue[300],
-                        ),
-                        child: Icon(
-                          Icons.send,
-                          color: AppColors.whiteColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                15.verticalSpace,
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextWidgets.headingWidget(controller.topic),
-                ),
-                10.verticalSpace,
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
-                    ),
-                    padding: const EdgeInsets.all(15),
-                    child: controller.messageHistory.isEmpty
-                        ? Center(
-                            child: TextWidgets.generalText('No messages'),
-                          )
-                        : ListView(
-                            children: controller.messageHistory.map((e) {
-                              return TextWidgets.generalText(e);
-                            }).toList(),
-                          ),
-                  ),
-                )
+                controller.connected
+                    ? const Expanded(child: TopicAndMessagesSection())
+                    : TextWidgets.generalText('Please connect to server'),
               ],
             ),
           ),
