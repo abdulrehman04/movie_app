@@ -7,7 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
-  setupDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupDependencies();
   await dotenv.load();
   runApp(const ProviderScope(child: MyApp()));
 }

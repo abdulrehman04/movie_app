@@ -24,19 +24,19 @@ class _VideoPlayerViewState extends ConsumerState<VideoPlayerView> {
   Widget build(BuildContext context) {
     VideoPlayerViewModel controller = ref.watch(videoPlayerViewModelProvider);
     return Scaffold(
-      body: PopScope(
-        canPop: !controller.youtubeController.value.isFullScreen,
-        onPopInvoked: (didPop) {
-          if (controller.youtubeController.value.isFullScreen) {
-            controller.youtubeController.toggleFullScreenMode();
-            context.pop();
-          }
-        },
-        child: controller.isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : YoutubePlayer(
+      body: controller.isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : PopScope(
+              canPop: !controller.youtubeController.value.isFullScreen,
+              onPopInvoked: (didPop) {
+                if (controller.youtubeController.value.isFullScreen) {
+                  controller.youtubeController.toggleFullScreenMode();
+                  context.pop();
+                }
+              },
+              child: YoutubePlayer(
                 controller: controller.youtubeController,
                 showVideoProgressIndicator: true,
                 progressIndicatorColor: Colors.amber,
@@ -51,7 +51,7 @@ class _VideoPlayerViewState extends ConsumerState<VideoPlayerView> {
                   context.pop();
                 },
               ),
-      ),
+            ),
     );
   }
 }

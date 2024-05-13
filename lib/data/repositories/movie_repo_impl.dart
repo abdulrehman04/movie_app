@@ -2,7 +2,7 @@ import 'package:cowlar_task/data/models/movie_detail_model.dart';
 import 'package:cowlar_task/data/models/movie_videos_model.dart';
 import 'package:cowlar_task/data/models/response_model.dart';
 import 'package:cowlar_task/data/models/upcoming_movies_model.dart';
-import 'package:cowlar_task/data/sources/movie_data_source.dart';
+import 'package:cowlar_task/data/sources/remote/movie_data_source.dart';
 import 'package:cowlar_task/domain/repositories/movie_repository.dart';
 
 class MovieRepoImpl implements MovieRepository {
